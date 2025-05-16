@@ -21,7 +21,7 @@ tags: Github
 网上随便搜就有教程，不详细说
 
 # jekyll-theme
-* [jekyll主题官网](http://jekyllthemes.org/)挑选，教程对应看作者的文档
+* [jekyll主题官网](https://jekyllthemes.org/)挑选，教程对应看作者的文档
 * github在Settings -> GitHub Pages下有一个Theme Chooser可以选择一个github提供的主题，选择比较少
 
 
