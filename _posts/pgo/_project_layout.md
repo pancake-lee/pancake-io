@@ -1,0 +1,88 @@
+---
+title: "PGO-目录结构"
+description: ""
+date:
+author: Pancake
+categories: Coding
+tags: Golang Framework
+---
+
+## 基于 Kratos
+
+基于[Kratos-Project-Layout](https://go-kratos.dev/blog/go-project-layout)
+
+总结出基本结构
+
+- api 存放接口定义 proto 文件
+  - helloworld 按应用划分
+    - v1 按版本划分
+    - errors 错误定义单独存放
+- cmd 应用入口
+  - helloworld 按应用划分
+- configs 配置文件
+- internal 业务代码
+  - conf 配置读取相关
+  - data 业务数据访问
+  - biz 业务逻辑
+  - service API 定义的服务层
+  - server http 和 grpc 相关的创建和配置代码
+- test 测试代码
+- pkg 跨工程的库代码
+- go.mod
+- go.sum
+- LICENSE
+- README.md
+
+## pgo
+
+### 关于/cmd 和 main.go
+
+用/cmd 单独存放各个服务的 main.go 会遇到这样的小麻烦
+
+```txt
+cmd
+  ...
+  user
+    main.go
+  ...
+...
+internal
+  ...
+  user
+    service
+  ...
+```
+
+- 同时阅读一个服务中的 main.go 和业务代码时，目录树的距离很远
+- vscode 中 ctl+p 快速打开一个服务的 main.go 时，无法准确定位某个服务
+- 想要同时修改多个 main.go 的代码时，编辑器标签栏将很混乱，因为他们都叫 main.go
+
+相比之下，我更希望一个服务的所有代码都能汇聚在/internal/user/下
+也许只是更符合我个人习惯，即使同时打开以下两个 user.go，也将是左右拆分的编辑器
+
+而且我希望不同的服务之间是隔离的，
+则不允许以代码调用的方式服用另一个服务的代码，
+如果需要复用，则应该直接调用接口。
+
+```txt
+internal
+  user
+    service
+      user.go
+      login.go
+    user.go
+```
+
+### service 层
+
+接口数据对象转换成业务对象
+
+### /pkg
+
+可以在根目录和 internal 下都创建 pkg 文件夹
+
+/pkg 基础框架：用于存储和整个项目的业务都无关的框架代码，作为公共库提供给其他项目用。比如连接数据库。
+
+/internal/pkg 业务框架：用于存储本项目特有，但是服务之间共享的库代码。
+比如本项目发送 email 需要统一加上一个结束语，并且觉得发送 email 是一种“库功能”。
+又比如日志模块，在/pkg/logger 中封装 zap 库，而/internal/pkg/logger 中，为每行日志都拼接用户 ID。
