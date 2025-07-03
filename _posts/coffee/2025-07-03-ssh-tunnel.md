@@ -7,6 +7,8 @@ categories: Coffee
 tags: ssh
 ---
 
+## 远程访问
+
 手上有多台设备，想要稳定在一个环境里工作。
 
 在 PC 安装了新的东西，假设就是升级了 golang 版本，
