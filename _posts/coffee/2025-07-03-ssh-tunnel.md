@@ -57,3 +57,13 @@ tags: ssh
 `ssh -p 1111 root@192.168.3.4`
 
 需要输入**机器 A**的密码（注意**不是**公网服务器的）
+
+## 安全性
+
+为了提高安全性，建议配置密钥登录，而不是密码登录
+
+ssh 客户端生成密钥：`ssh-keygen -t rsa -C "your@email.com"`
+
+把 ssh 客户端创建的公钥`.pub`文件内容贴到下面文件
+
+ssh 服务端创建/修改文件：`vim ~/.ssh/authorized_keys`
