@@ -59,8 +59,9 @@ tags: frontend
       - webpack, eslint, jest, electron-builder
       - npm install package-name --save-dev
     - 生产依赖（dependencies）
-    - npx 用于临时安装并运行包，而不需要全局安装
-    - pnpm 替代 npm 命令，速度快，磁盘占用少
+  - npx 用于临时安装并运行包，而不需要全局安装
+  - pnpm 替代 npm 命令，速度快，磁盘占用少
+  - nvm 管理 node 的版本，nvm list 列出当前安装的版本
 - MouseEvent
   - screenX/screenY 鼠标相对于整个屏幕的坐标
   - clientX/clientY 鼠标相对于浏览器视口的坐标
