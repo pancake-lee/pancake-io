@@ -3,9 +3,10 @@ title: "换课工具"
 description: "记录一个教师换课辅助工具的开发过程"
 author: Pancake
 date: 2025-12-31
-categories: PGO
+categories: APP
 tags: [Golang, Fyne, Excel]
 ---
+
 ## 引言
 
 很久前就开发了一个用于辅助老师进行“换课”的小工具。之前是以命令行的方式运行的，也因此我的“用户”并不想用。
