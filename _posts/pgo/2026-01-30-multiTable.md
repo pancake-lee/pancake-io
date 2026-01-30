@@ -1,3 +1,12 @@
+---
+title: "PGO-MultiTable"
+description: ""
+author: Pancake
+date: 2026-01-30
+categories: PGO
+tags: Golang
+---
+
 ## 多维表格
 
 各家产品上命名不同，如
@@ -11,9 +20,11 @@
 
 首先是“多维”是最重要的特性，正是以不同的维度去展示数据。
 
-然后 spreadsheet 还算是比较产品向的命名，而 table 比较技术向，毕竟 mysql 命令是 show tables;
+然后 spreadsheet 还算是比较产品向的命名，
+而 table 比较技术向，适合开发者，毕竟 mysql 命令是 show tables;
 
-代码中我就缩写一下“MultiTable”。
+代码中我就缩写一下"MultiTable" = "MTBL"，
+相对的本地数据库叫"LocalTable" = "LTBL"。
 
 ## 企微智能表格
 
@@ -25,65 +36,11 @@
 
 - 不能私有化部署，很多时候我们需要局域网内部署。联系客服应该可以本地部署，至少官网提及私有化的特性，但是功能是否阉割就不知道了。
 - API 的调用频率限制比较大，我的测试代码（新建表-创建字段-删除字段-删除现有数据-创建新数据）经常无法一次性跑完测试。
-  `get sheet failed: errcode=45009, errmsg=api freq out of limit, hint: [1752203840059500818414065], from ip: 14.116.203.185, more info at https://open.work.weixin.qq.com/devtool/query?e=45009`
+  `get sheet failed: errcode=45009, errmsg=api freq out of limit, hint: [1752203840059500818414065], from ip: 1.2.3.4, more info at https://open.work.weixin.qq.com/devtool/query?e=45009`
 
 还有飞书/钉钉这些平台，应该都差不多的，个人觉得飞书走得比较前一点，但是具体选择还得看公司在用哪个平台，毕竟不太可能说换就换的。
 
-总结：可用。需要试用清楚
-
-## APITable
-
-### 部署
-
-[APITable](https://github.com/apitable/apitable)
-
-一键部署，在 window 上用 git-bash 执行
-
-`curl https://apitable.github.io/install.sh | bash`
-
-坑 1：
-
-    有时候网络问题导致脚本失败了，好好判断报错信息吧。
-    我有梯子，但是还是失败了，还以为是有什么依赖错误，
-    排查了一会儿，什么都没改，重新执行一下又好了，就单纯是网络问题。
-
-坑 2：
-
-    all-in-one 部署出来容器内报错，没有深究。
-    docker run -d -v ${PWD}/.data:/apitable -p 80:80 --name apitable apitable/all-in-one:latest
-    在 window 上用 git-bash 执行，cmd没有${PWD}变量
-
-### API
-
-界面上关键的信息有：
-
-- spaceId 右侧【空间站管理】
-- datasheetId/viewId 进入一个表格/视图，点击【API】，curl 示例中有该表格/视图的 id
-- token 【个人信息】中的【开发者配置】中创建【API 令牌】
-
-然后我实现了和上面企微智能表格几乎一样的封装，但不完全一致，也没有抽象成统一的接口，刚开始开发，接口还不稳定。
-
-APITable 界面上的 API 面板是挺好的，但是如果能提供一个完整的 swagger（就是 OpenAPI 3.0）我就可以直接生成 SDK 了。
-
-### 体验
-
-最大问题是官方脚本部署出来后，单表最多 100 行数据？？？
-
-我都把好几个接口以及好几种字段类型都实现完了，想测试个大一点的数据量，才发现有这么个限制。
-
-一看空间管理，用户席位 2 个，存储 1G，文件 5 个，总行数 250 行？加上面单表 100 行限制，这没法用啊。
-
-[官方文档](https://apitable.getoutline.com/s/82e078fc-1a8d-4616-b69d-fcdbb18ef715/doc/configuration-paNhPtzqMN)
-查到 SERVER_MAX_RECORD_COUNT 配置，尝试在`.env`和`docker-compose.yaml`配置过，不起作用。
-而且这个变量默认值是 50000，应该不是对应上述的限制。
-
-在官方文档/网上冲浪/源码阅读中辗转了大半天，最后确定这个问题需要修改源码重新编译[参考 issues](https://github.com/apitable/apitable/issues/1122)
-
-暂时放一放吧，要部署环境可能又会花费不少时间，回头接这里的话[开发环境](https://apitable.getoutline.com/s/751b142b-866f-4174-a5f1-a2975f85ad41/doc/developer-quick-start-zofpBpXg9A)
-
-### 总结
-
-功能体验都挺好的，开发资料也足够，唯一问题就是：想要无限制使用，需要源码重新编译打包。
+总结：可用，需要试用清楚。
 
 ## NocoDB
 
@@ -119,7 +76,7 @@ PS: 记一下别人写的[SDK](https://github.com/eduardolat/nocodbgo)，还没�
 
 ### 部署
 
-我本地部署后，页面提示我`Click the "UI Editor" icon in the upper right corner to enter the UI Editor mode`，但是我真的找不到这个按钮。原来吧，我是自己注册的账号，要用管理员账号才能编辑界面。
+我本地部署后，页面提示我 `Click the "UI Editor" icon in the upper right corner to enter the UI Editor mode`，但是我真的找不到这个按钮。原来吧，我是自己注册的账号，要用管理员账号才能编辑界面。
 
 其实根本原因是我自己没把文档看完，[部署文档](https://docs-cn.nocobase.com/welcome/getting-started/installation/docker-compose)最后一句就是默认账号密码。我硬是排查了好一会儿，通过[环境变量](https://docs-cn.nocobase.com/welcome/getting-started/env)设置初始化账号密码，然后重新初始化了容器。
 
@@ -153,7 +110,76 @@ demo 里是先点击编辑按钮，在弹出的抽屉中交互，才能修改数
 
 如果对于管理后台这类型的需求，足够。而对于产品级别的应用，不太够用。
 
-## 最终选型 APITable
+## APITable
 
-- APITable 修改源码重新打包
-- TODO
+最终选型了APITable
+
+### 部署
+
+[APITable](https://github.com/apitable/apitable)
+
+一键部署，在 window 上用 git-bash 执行
+
+`curl https://apitable.github.io/install.sh | bash`
+
+坑 1：
+
+    有时候网络问题导致脚本失败了，好好判断报错信息吧。
+    我有梯子，但是还是失败了，还以为是有什么依赖错误，
+    排查了一会儿，什么都没改，重新执行一下又好了，就单纯是网络问题。
+
+坑 2：
+
+    all-in-one 部署出来容器内报错，没有深究。
+    docker run -d -v ${PWD}/.data:/apitable -p 80:80 --name apitable apitable/all-in-one:latest
+    在 window 上用 git-bash 执行，因为cmd没有${PWD}变量
+
+### API
+
+对于开发，以下几个关键的信息需要从WEB页面中获取：
+
+- spaceId 右侧【空间站管理】
+- datasheetId/viewId 进入一个表格/视图，点击【API】，curl 示例中有该表格/视图的 id
+- token 【个人信息】中的【开发者配置】中创建【API 令牌】
+
+然后我实现了和上面企微智能表格几乎一样的封装，但不完全一致，
+也没有抽象成统一的接口，等有实际业务跑通了，代码稳定下来再考虑抽象。
+
+APITable 界面上的 API 面板是挺好的，但是如果能提供一个完整的 swagger（就是 OpenAPI 3.0）我就可以直接生成 SDK 了，可惜。
+
+### 限制和源码
+
+最大问题是官方脚本部署出来后，单表最多 100 行数据？？？
+
+我都把好几个接口以及好几种字段类型都实现完了，想测试个大一点的数据量，才发现有这么个限制。
+
+一看空间管理，用户席位 2 个，存储 1G，文件 5 个，总行数 250 行？加上面单表 100 行限制，这没法用啊。
+
+[官方文档](https://apitable.getoutline.com/s/82e078fc-1a8d-4616-b69d-fcdbb18ef715/doc/configuration-paNhPtzqMN)
+查到 SERVER_MAX_RECORD_COUNT 配置，尝试在 `.env`和 `docker-compose.yaml`配置过，不起作用。
+而且这个变量默认值是 50000，应该不是对应上述的限制。
+
+在官方文档/网上冲浪/源码阅读中辗转了大半天，最后确定这个问题需要修改源码重新编译[参考 issues](https://github.com/apitable/apitable/issues/1122)
+
+搭建[开发环境](https://apitable.getoutline.com/s/751b142b-866f-4174-a5f1-a2975f85ad41/doc/developer-quick-start-zofpBpXg9A)拉源码下来研究一下，配合AI很快就能找到方法的。
+
+### 封装
+
+基于官方 API，我在 `pkg/papitable` 下封装apitable的api调用：
+
+- **结构化操作**：
+  - **Table/Column**：封装了表格创建以及字段的动态增删查。支持将复杂的字段配置简化为结构体操作。
+  - **Row**：提供了强类型的行记录操作接口（CRUD），自动处理不同字段类型（如多选、成员、关联）的 JSON 序列化与反序列化。
+
+- **高级功能**：
+  - **Attachment**：封装了附件上传流程，处理了上传 Token 获取与文件流传输。
+  - **Permission**：集成了成员列表获取与基础权限判断。未完成，需要二开apitable。
+  - **Sync**：实现了本地数据与多维表格的双向同步逻辑，支持增量更新，这也是实现“混合开发模式”的核心组件。
+
+> 也正是"Sync"这部分的开发，耗费比较多精力之余，学习了大量相关的知识。
+> CDC/Canal/GTID/ETL等等各种技术原理。
+> 具体到如何标记一个同步消息是否已经处理过了等等问题。
+> 阅读理论知识，到实际自己开发解决问题还是有很大距离的。
+
+- **AI 辅助设计 (`doc4ai`)**：
+  - 为了配合 AI 编程，我在 `doc4ai` 目录下维护了一套纯文本的“接口说明书”（如 `row_查询记录.txt`、`tbl_创建表格.txt`）。这些不仅是文档，更是提供给 AI Agent 的 Context，使得 AI 在编写业务逻辑时能准确调用 SDK。
