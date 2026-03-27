@@ -134,6 +134,14 @@ demo 里是先点击编辑按钮，在弹出的抽屉中交互，才能修改数
     docker run -d -v ${PWD}/.data:/apitable -p 80:80 --name apitable apitable/all-in-one:latest
     在 window 上用 git-bash 执行，因为cmd没有${PWD}变量
 
+坑 3（SMTP 配置）：
+
+    本地部署后如果要改 SMTP，建议只在 .env 里配置账号等信息，不要把密码明文写进去。
+    密码通过环境变量注入，例如：`MAIL_PASSWORD=xxx docker-compose up -d backend-server`
+    这里必须重建 backend-server 容器，单纯 docker-compose restart 不会更新容器内环境变量。
+    **但是**其实环境变量的方式也没成功，最终还是在.env写了明文，启动容器后，再把明文删掉了。
+    没有深究环境变量/.env/compose文件谁覆盖谁的问题，反正低频操作，现在能用就先这样了。
+
 ### API
 
 对于开发，以下几个关键的信息需要从WEB页面中获取：
