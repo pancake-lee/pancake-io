@@ -17,4 +17,4 @@ theme 来自[Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)
 | revert   | 回退       |
 | style    | 代码风格   |
 | test     | 测试       |
-| pages    | 发布文章   |
+| post     | 发布文章   |
