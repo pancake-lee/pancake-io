@@ -3,9 +3,10 @@ title: "尼康云创-自动化导出多种色彩方案的照片"
 description:
 author: Pancake
 date: 2025-12-31
-categories: Coffee
-tags: ssh
+categories: APP
+tags: Application
 ---
+
 ## 需求
 
 我有一个 Nikon Z50II，基于尼康云创功能，我可以使用官方或“参与创摄者”的色彩方案。

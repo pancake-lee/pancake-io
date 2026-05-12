@@ -4,7 +4,7 @@ description: "记录一个教师换课辅助工具的开发过程"
 author: Pancake
 date: 2025-12-31
 categories: APP
-tags: [Golang, Fyne, Excel]
+tags: [Application, Golang, Fyne, Excel]
 ---
 
 ## 引言

@@ -3,8 +3,8 @@ title: "个人工具集"
 description: ""
 author: Pancake
 date: 2048-01-01
-categories: Coffee
-tags: []
+categories: APP
+tags: [Application]
 ---
 
 ## 教师换课工具
