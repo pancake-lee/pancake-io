@@ -174,4 +174,4 @@ LangChain 的 `OpenAIEmbeddings` 默认用 `tiktoken` 把文本预编码为 toke
 
 ---
 
-_项目代码已开源： [github.com/yourname/photo-agent](https://github.com/yourname/photo-agent) (示例链接)_
+项目代码已开源： [photo-agent](https://github.com/pancake-lee/photo-agent)
