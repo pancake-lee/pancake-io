@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Agent 三层架构图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+  }
+
+  .diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 800px;
+  }
+
+  /* ── Node box ── */
+  .node {
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    padding: 20px 32px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    position: relative;
+    z-index: 1;
+  }
+
+  .node-user       { border-color: #adb5bd; }
+  .node-agent      { border-color: #7950f2; background: #f8f0ff; }
+  .node-python     { border-color: #1c7ed6; background: #e7f5ff; }
+  .node-go         { border-color: #2b8a3e; background: #ebfbee; }
+
+  .node-storage    {
+    border-color: #e67700; background: #fff9db;
+    border-radius: 8px; padding: 12px 20px; font-size: 13px;
+  }
+
+  .node .emoji { font-size: 28px; margin-bottom: 6px; }
+  .node .title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .node .sub   { font-size: 13px; color: #495057; line-height: 1.6; }
+
+  /* ── Arrow between nodes ── */
+  .arrow-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 4px 0;
+  }
+
+  .arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #868e96;
+    font-size: 12px;
+  }
+
+  .arrow-line {
+    width: 2px;
+    height: 28px;
+    background: #ced4da;
+    position: relative;
+  }
+  .arrow-line::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #ced4da;
+  }
+  .arrow-label {
+    margin-top: 4px;
+    color: #868e96;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* ── Side arrow (Python → Go, Python → Chroma) ── */
+  .side-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin: 0;
+    position: relative;
+    z-index: 0;
+  }
+
+  .side-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #868e96;
+    font-size: 12px;
+  }
+
+  .side-arrow .vline {
+    width: 2px;
+    height: 24px;
+    background: #ced4da;
+    position: relative;
+  }
+  .side-arrow .vline::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #ced4da;
+  }
+
+  /* ── Horizontal layout for storage row ── */
+  .storage-row {
+    display: flex;
+    gap: 32px;
+  }
+
+  /* ── Vertical connector bracket ── */
+  .connector-row {
+    display: flex;
+    justify-content: center;
+    gap: 160px;
+    position: relative;
+    height: 30px;
+  }
+  .connector-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .connector-v {
+    width: 2px;
+    height: 30px;
+    background: #ced4da;
+    position: relative;
+  }
+  .connector-v::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #ced4da;
+  }
+
+  .connector-label {
+    font-size: 12px;
+    color: #868e96;
+    margin-top: 8px;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="diagram">
+
+  <!-- User -->
+  <div class="node node-user" style="min-width: 200px;">
+    <div class="emoji">👤</div>
+    <div class="title">用户</div>
+    <div class="sub">CLI 终端 / 自然语言输入</div>
+  </div>
+
+  <!-- Arrow: User → Agent -->
+  <div class="arrow">
+    <div class="arrow-line"></div>
+    <div class="arrow-label">自然语言问题</div>
+  </div>
+
+  <!-- Agent Layer -->
+  <div class="node node-agent" style="min-width: 360px;">
+    <div class="emoji">🧠</div>
+    <div class="title">LangGraph 编排层</div>
+    <div class="sub">查询分类 → 条件路由 → 结果聚合</div>
+  </div>
+
+  <!-- Side arrows: Agent → Python (rag / sql) -->
+  <div class="arrow">
+    <div class="arrow-line"></div>
+    <div class="arrow-label">分发到对应分支</div>
+  </div>
+
+  <!-- Python Layer -->
+  <div class="node node-python" style="min-width: 520px;">
+    <div class="emoji">🐍</div>
+    <div class="title">Python 推理层</div>
+    <div class="sub">RAG 语义检索 &nbsp;·&nbsp; Text-to-SQL &nbsp;·&nbsp; Embedding &nbsp;·&nbsp; LLM 生成</div>
+  </div>
+
+  <!-- Connector: Python → Go (SQL/Embedding)  |  Python → Chroma -->
+  <div class="connector-row">
+    <div class="connector-col">
+      <div class="connector-v"></div>
+      <div class="connector-label">SQL 查询 / Embedding 请求</div>
+    </div>
+    <div class="connector-col">
+      <div class="connector-v"></div>
+      <div class="connector-label">向量检索</div>
+    </div>
+  </div>
+
+  <!-- Bottom row: Go Data Layer + Chroma -->
+  <div style="display:flex; gap:60px; align-items:flex-start;">
+    <div class="node node-go" style="min-width: 280px;">
+      <div class="emoji">🔧</div>
+      <div class="title">Go 数据层</div>
+      <div class="sub">REST API &nbsp;·&nbsp; Embedding 代理 &nbsp;·&nbsp; EXIF 提取</div>
+    </div>
+    <div class="node node-storage" style="min-width: 180px;">
+      <div class="emoji">🗄️</div>
+      <div class="title">Chroma 向量库</div>
+      <div class="sub">照片描述索引</div>
+    </div>
+  </div>
+
+  <!-- Connector: Go → SQLite -->
+  <div class="arrow" style="margin-top:2px;">
+    <div class="arrow-line"></div>
+    <div class="arrow-label">结构化数据读写</div>
+  </div>
+
+  <!-- SQLite -->
+  <div class="node node-storage" style="min-width: 200px;">
+    <div class="emoji">💾</div>
+    <div class="title">SQLite</div>
+    <div class="sub">照片元数据 · EXIF · GPS · 拍摄参数</div>
+  </div>
+
+</div>
+
+</body>
+</html>
