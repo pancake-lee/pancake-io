@@ -3,7 +3,7 @@ title: "Effective C++ 读书笔记"
 description: "各章节主要内容个人理解总结"
 date: 2019-06-08
 author: Pancake
-categories: Coding
+categories: Cpp
 tags: Cpp
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "部署AI模型的记录"
+title: "部署SD模型的记录"
 description: "临时笔记，未成功部署"
 author: Pancake
 date: 2026-01-30

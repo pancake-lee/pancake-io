@@ -3,7 +3,7 @@ title: "利用boost::property_tree读取INI文件"
 description: "通过读取INI文件的实例学习boost::property_tree类的用法"
 author: Pancake
 date: 2018-05-10
-categories: Coding
+categories: Cpp
 tags: boost Cpp
 ---
 

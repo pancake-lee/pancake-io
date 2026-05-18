@@ -1,5 +1,5 @@
 ---
-title: "换课工具"
+title: "APP-换课工具"
 description: "记录一个教师换课辅助工具的开发过程"
 author: Pancake
 date: 2025-12-31

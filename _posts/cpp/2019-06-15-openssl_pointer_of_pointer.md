@@ -3,7 +3,7 @@ title: "OPENSSL中二级指针作为参数的坑"
 description: " "
 date: 2019-06-15
 author: Pancake
-categories: Coding
+categories: Cpp
 tags: OpenSsl Cpp
 ---
 

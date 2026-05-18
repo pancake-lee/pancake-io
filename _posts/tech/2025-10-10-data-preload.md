@@ -3,7 +3,7 @@ title: "从“逐一处理”到“批量处理”的优化方案"
 description:
 author: Pancake
 date: 2025-10-10
-categories: Coffee
+categories: Tech
 tags: coding
 ---
 

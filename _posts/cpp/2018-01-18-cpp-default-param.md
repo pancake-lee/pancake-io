@@ -1,9 +1,9 @@
 ---
-title: "C++ 默认参数与继承产生的有趣现象"
+title: "C++ 虚函数默认参数的“编译时与运行时”分离现象"
 description: "默认参数在编译阶段确定，函数的版本在运行时确定"
 author: Pancake
 date: 2018-01-18
-categories: Coding
+categories: Cpp
 tags: build Cpp
 ---
 

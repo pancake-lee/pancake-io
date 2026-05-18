@@ -3,7 +3,7 @@ title: "gcc/g++链接选项"
 description: "链接顺序/符号冲突/显示指定动态还是静态链接"
 author: Pancake
 date: 2019-06-06
-categories: Coding
+categories: Cpp
 tags: build Cpp
 ---
 
