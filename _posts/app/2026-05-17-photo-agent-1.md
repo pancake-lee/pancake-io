@@ -18,7 +18,7 @@ pin: true
 
 这就是 **Photo Agent** 的由来。而当前这个"第一个问题"已经解决了。
 
-![猫猫](assets/img/pages/photo-agent-architecture/1.png)
+![猫猫](../../assets/img/pages/photo-agent-architecture/1.png)
 
 > 效果图
 
@@ -26,7 +26,7 @@ pin: true
 
 系统分为三层，每一层都有明确的边界和职责：
 
-![三层架构图](assets/img/pages/photo-agent-architecture/2.png)
+![三层架构图](../../assets/img/pages/photo-agent-architecture/2.png)
 
 > 三层架构图
 
