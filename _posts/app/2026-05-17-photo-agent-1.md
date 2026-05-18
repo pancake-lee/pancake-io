@@ -5,6 +5,7 @@ author: Pancake
 date: 2026-05-17
 categories: APP
 tags: [Application, Golang, Python, Agent, AI, LangChain, LangGraph]
+pin: true
 ---
 
 ## 一、具体的痛点
