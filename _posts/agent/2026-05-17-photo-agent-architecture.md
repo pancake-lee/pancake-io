@@ -2,7 +2,7 @@
 title: "Go + Python + LangGraph：一个个人AI Agent的实践"
 description: "找到在厕所门口咆哮的猫猫"
 author: Pancake
-date: 2026-05-18
+date: 2026-05-17
 categories: Agent
 tags: [Application, Golang, Python, Agent, AI, LangChain, LangGraph]
 ---
