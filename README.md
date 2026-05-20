@@ -52,3 +52,60 @@ theme 来自[Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)
 ### 后续新增文章的路径规范
 
 - 所有 `_posts/<子目录>/` 下的文章，引用 `assets/img/` 下的图片时，统一使用 `../../assets/img/...` 的相对路径写法。
+
+## 评论与访问统计配置
+
+博客使用 **Giscus**（评论）和 **GoatCounter**（访问统计 + 单篇文章阅读量），均为免费方案，Chirpy 主题原生支持。
+
+### 1. Giscus 评论
+
+**前置条件**：GitHub 仓库已开启 Discussions。
+
+1. 访问 https://github.com/apps/giscus ，将 Giscus App 安装到目标仓库
+2. 访问 https://giscus.app ，输入仓库名（如 `pancake-lee/pancake-io`）
+3. 页面自动检测 Discussions 分类，选择 `Announcements`
+4. 页面底部会生成一段 `<script>` 代码，提取其中的 `data-repo-id` 和 `data-category-id`
+5. 在 `_config.yml` 中填写：
+
+```yaml
+comments:
+  provider: giscus
+  giscus:
+    repo: <用户名>/<仓库名>
+    repo_id: <data-repo-id>
+    category: Announcements
+    category_id: <data-category-id>
+    mapping: pathname
+    strict: 0
+    input_position: bottom
+    lang: zh-CN
+    reactions_enabled: 1
+```
+
+**验证**：文章底部出现评论框即为成功。
+
+### 2. GoatCounter 统计
+
+**前置条件**：在 https://www.goatcounter.com 注册账号并添加站点。
+
+1. 注册后获得一段跟踪代码，格式如下：
+
+```html
+<script data-goatcounter="https://<你的ID>.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+```
+
+2. 提取其中的 `<你的ID>`，在 `_config.yml` 中填写：
+
+```yaml
+analytics:
+  goatcounter:
+    id: <你的ID>
+
+pageviews:
+  provider: goatcounter
+```
+
+**验证**：
+- 部署后访问 `https://<你的ID>.goatcounter.com` 查看实时数据
+- 文章卡片上会显示阅读量数字（Chirpy 主题原生支持 GoatCounter 的 pageviews）
