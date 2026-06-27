@@ -1,6 +1,6 @@
 ---
 title: "PGO-Config"
-description: ""
+description: "配置管理封装：支持多环境配置加载、环境变量覆盖与配置热更新。"
 author: Pancake
 date: 2025-06-10
 categories: Backend

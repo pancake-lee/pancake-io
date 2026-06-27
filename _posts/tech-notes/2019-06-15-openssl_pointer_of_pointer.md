@@ -1,6 +1,6 @@
 ---
 title: "OPENSSL中二级指针作为参数的坑"
-description: " "
+description: "OpenSSL 函数中使用二级指针作为参数时的一个隐藏陷阱与排查过程记录。"
 date: 2019-06-15
 author: Pancake
 categories: Tech-Notes

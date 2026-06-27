@@ -1,6 +1,6 @@
 ---
 title: "PGO-MultiTable"
-description: ""
+description: "多维表格（Basetool）实践：动态列、多视图、数据关联等灵活数据结构的设计与实现。"
 author: Pancake
 date: 2026-01-30
 categories: Backend

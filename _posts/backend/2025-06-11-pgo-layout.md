@@ -1,6 +1,6 @@
 ---
 title: "PGO-Layout"
-description: ""
+description: "基于 Kratos 的项目布局设计：在分层架构与实际开发效率之间寻找平衡。"
 author: Pancake
 date: 2025-06-11
 categories: Backend

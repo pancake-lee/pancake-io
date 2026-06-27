@@ -1,6 +1,6 @@
 ---
 title: "远程开发环境搭建"
-description: ""
+description: "使用 code-server 搭建基于浏览器的远程 VS Code 开发环境，随时随地写代码。"
 author: Pancake
 date: 2025-06-30
 categories: Tech-Notes

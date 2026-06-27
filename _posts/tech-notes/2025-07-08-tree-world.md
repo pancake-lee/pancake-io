@@ -1,6 +1,6 @@
 ---
 title: "TreeWorld-基于树表的前端玩具项目"
-description: ""
+description: "一个基于树形数据结构的前端实验项目：探索树表的增删改查与可视化交互。"
 author: Pancake
 date: 2025-07-08
 categories: Tech-Notes

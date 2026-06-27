@@ -1,6 +1,6 @@
 ---
 title: "通过 SSH 隧道远程访问局域网的主机"
-description:
+description: "利用 SSH 端口转发穿透 NAT，从外网安全访问局域网内的开发主机。"
 author: Pancake
 date: 2025-07-03
 categories: Tech-Notes

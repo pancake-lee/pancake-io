@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw"
-description:
+description: "本地 AI 部署笔记：OpenClaw Docker 部署、模型配置与踩坑记录。"
 author: Pancake
 date: 2026-03-27
 categories: Tech-Notes

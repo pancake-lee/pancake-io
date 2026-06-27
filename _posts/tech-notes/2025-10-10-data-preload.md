@@ -1,6 +1,6 @@
 ---
 title: "从“逐一处理”到“批量处理”的优化方案"
-description:
+description: "将逐条数据库查询优化为批量预加载，解决 N+1 查询问题的实践方案。"
 author: Pancake
 date: 2025-10-10
 categories: Tech-Notes

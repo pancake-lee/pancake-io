@@ -1,6 +1,6 @@
 ---
 title: "jeklly+github+gitee做个人博客"
-description: " "
+description: "使用 Jekyll + GitHub Pages + Gitee Pages 双线部署个人博客的方案记录。"
 author: Pancake
 date: 2019-06-08
 categories: Tech-Notes
