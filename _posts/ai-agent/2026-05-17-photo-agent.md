@@ -7,7 +7,7 @@ categories: AI-Agent
 tags: [Application, Golang, Python, Agent, AI, LangChain, LangGraph]
 pin: true
 image:
-  path: ../../assets/img/pages/photo-agent-architecture/1.png
+  path: assets/img/pages/photo-agent-architecture/1.png
 ---
 
 ## 一、具体的痛点

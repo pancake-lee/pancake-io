@@ -7,7 +7,7 @@ categories: Projects
 tags: [PFlow, AI-Agent, Dashboard, 产品设计, Golang, Vue]
 pin: true
 image:
-  path: ../../assets/img/pages/pflow/3.png
+  path: assets/img/pages/pflow/3.png
 ---
 
 [上一篇文章](/pancake-io/posts/pflow-design-philosophy/) 讲了 PFlow 的设计哲学，它为什么不是又一个 Agent，以及游戏关卡设计如何启发了一套三幕认知引导流程。但这只讲了"为什么这样做"，没有展开"做出来是什么样"。
