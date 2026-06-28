@@ -1,5 +1,5 @@
 ---
-title: "PFlow 设计哲学：不是又一个 Agent，而是一张 AI 会话的沙盘指挥图"
+title: "PFlow 设计思路：不是又一个 Agent，而是一张 AI 会话的沙盘指挥图"
 description: "从多 Agent 会话管理的真实痛点出发，讲述 PFlow 的设计故事，认知科学底座、三幕引导流程、以及「只做调度不做对话」的产品哲学。"
 author: Pancake
 date: 2026-06-27
