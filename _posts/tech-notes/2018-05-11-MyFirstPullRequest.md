@@ -1,6 +1,6 @@
 ---
 title: "分享一下Pull Request成功的小喜悦"
-description: "向开源项目贡献代码的第一次 Pull Request 经历——从忐忑到被合并。"
+description: "向开源项目贡献代码的第一次 Pull Request 经历，从忐忑到被合并。"
 author: Pancake
 date: 2018-05-10
 categories: Tech-Notes
