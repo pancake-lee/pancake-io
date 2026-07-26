@@ -4,7 +4,7 @@ description: "学习笔记：Agent 基本概念"
 author: Pancake
 date: 2026-07-23
 categories: AI-Agent
-tags: [AI学习, AI-Engineer,, Photo-Agent]
+tags: [AI学习, AI-Engineer, Photo-Agent]
 ---
 
 ## LLMs

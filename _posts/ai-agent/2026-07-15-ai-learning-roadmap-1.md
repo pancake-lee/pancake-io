@@ -4,7 +4,7 @@ description: "学习笔记：photo-agent 项目做了一轮后遇到瓶颈，决
 author: Pancake
 date: 2026-07-15
 categories: AI-Agent
-tags: [AI学习, AI-Engineer,, Photo-Agent]
+tags: [AI学习, AI-Engineer, Photo-Agent]
 ---
 
 photo-agent 功能基本跑通了：自然语言搜索照片、VLM 描述生成、LangGraph 路由、ChromaDB 向量检索、Text-to-SQL 结构化过滤。

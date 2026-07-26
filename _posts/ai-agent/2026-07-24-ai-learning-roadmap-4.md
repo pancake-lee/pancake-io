@@ -4,7 +4,7 @@ description: "学习笔记：Agent 的评估和测试"
 author: Pancake
 date: 2026-07-24
 categories: AI-Agent
-tags: [AI学习, AI-Engineer,, Photo-Agent]
+tags: [AI学习, AI-Engineer, Photo-Agent]
 ---
 
 正如我当前的Photo-Agent项目一样，构建出一个基础的Agent应用是比较简单的，但是一旦完成初版，就要考虑如何优化，而优化前就需要先对当前状况有一个评估/测试，以便观测优化后的提升。

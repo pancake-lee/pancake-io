@@ -4,7 +4,7 @@ description: "学习笔记：Embedding + Vector -> RAG"
 author: Pancake
 date: 2026-07-22
 categories: AI-Agent
-tags: [AI学习, AI-Engineer,, Photo-Agent]
+tags: [AI学习, AI-Engineer, Photo-Agent]
 ---
 
 > 有必要记录一下的说明：RoadMap中其实分了Embeddings/Vector DB/RAG等分类。比如Data Classification虽然被我记录成Embeddings下的一个Use Case，但其实Data Classification的含义是很广泛的，也不是某个范畴下的特定技术。但是以下笔记时，我都默认是用于做Agent的RAG领域，所以记录的也许是片面的。
