@@ -1,5 +1,5 @@
 ---
-title: "[APP] PFlow 产品全貌：Dashboard 设计、提醒算法与架构决策"
+title: "[APP] PFlow 尝试在AI辅助的并行工作中建立[心流]"
 description: "逐一展开 PFlow 的 Dashboard 两级视图、路径即项目机制、提醒分数算法、注意力遮罩、军情哨建议引擎和专注模式，以及每个设计背后的权衡。"
 author: Pancake
 date: 2026-06-27
