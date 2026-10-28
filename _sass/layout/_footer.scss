@@ -4,6 +4,7 @@
 @use '../abstracts/placeholders';
 
 footer {
+  position: relative;
   background-color: var(--main-bg);
   height: v.$footer-height;
   border-top: 1px solid var(--main-border-color);
@@ -12,9 +13,35 @@ footer {
 
   @include bp.lt(bp.get(lg)) {
     @include mx.slide;
+  }
 
-    height: v.$footer-height-large;
+  @media (max-width: 991px) {
+    height: auto;
+    min-height: v.$footer-height-large;
     padding: 1.5rem 0;
+    gap: 0.25rem;
+  }
+
+  #force-refresh {
+    align-self: center;
+    padding: 0.25rem;
+    border: 0;
+    background: none;
+    color: var(--text-muted-color);
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--link-color);
+      text-decoration: underline;
+    }
+
+    @media (min-width: 992px) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   a {

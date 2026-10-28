@@ -28,6 +28,10 @@
     {% endif %}
   </p>
 
+  {% if jekyll.environment == 'production' and site.pwa.cache.enabled %}
+    <button id="force-refresh" type="button">Force refresh</button>
+  {% endif %}
+
   <p>
     {%- capture _platform -%}
       <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
@@ -47,3 +51,33 @@
     {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
   </p>
 </footer>
+
+{% if jekyll.environment == 'production' and site.pwa.cache.enabled %}
+  <script>
+    document.getElementById('force-refresh').addEventListener('click', async function () {
+      this.disabled = true;
+
+      try {
+        const cacheNames = await caches.keys();
+        const siteHome = new URL('{{ "/" | relative_url }}', window.location.origin);
+
+        await Promise.all(
+          cacheNames
+            .filter((name) => name.startsWith('chirpy-'))
+            .map(async (name) => {
+              const cache = await caches.open(name);
+              if (await cache.match(siteHome)) {
+                await caches.delete(name);
+              }
+            })
+        );
+      } catch (error) {
+        console.error('Failed to clear site cache:', error);
+      }
+
+      const url = new URL(window.location.href);
+      url.searchParams.set('force-refresh', Date.now().toString());
+      window.location.replace(url.href);
+    });
+  </script>
+{% endif %}
