@@ -44,6 +44,9 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
+      - name: Check post slugs
+        run: python3 tools/check-post-slugs.py
+
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
